@@ -1,0 +1,4 @@
+mutation_id,event_type,reference_position,reference_start,reference_end,reference_sequence,sample_sequence,length,note
+1,mismatch,245,245,245,G,A,1,G changed to A at reference position 245
+2,deletion,500-506,500,506,TCACAAT,-,7,7 bp deleted from reference position 500-506
+3,insertion,after 1200,1200,1200,-,TTGACA,6,6 bp inserted after 1200

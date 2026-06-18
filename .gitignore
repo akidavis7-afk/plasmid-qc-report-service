@@ -1,0 +1,15 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+venv/
+.env
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Optional: ignore private/client data
+data/private/
+client_data/

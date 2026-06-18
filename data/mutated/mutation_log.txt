@@ -1,0 +1,21 @@
+======================================================================
+MUTATION SIMULATION LOG
+Date: 2026-06-16 21:12:58
+======================================================================
+
+SEQUENCE INFORMATION
+----------------------------------------------------------------------
+Original sequence length: 2,686 bp
+Mutated sequence length:  2,685 bp
+Length change:            -1 bp
+GC content (original):    50.63%
+GC content (mutated):     50.65%
+
+MUTATIONS APPLIED
+----------------------------------------------------------------------
+Total number of mutations: 3
+
+Mutation #1:
+  Type: Substitution (point mutation)
+  Biological position: 245
+  Python index:        244

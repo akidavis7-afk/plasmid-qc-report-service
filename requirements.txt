@@ -1,0 +1,6 @@
+biopython
+pandas
+matplotlib
+dna-features-viewer
+pyyaml
+reportlab

@@ -1,0 +1,22 @@
+project_name: puc19_demo
+plasmid_name: puc19
+topology: circular
+
+reference_genbank: data/reference/reference_puc19.gb
+reference_fasta: data/reference/reference_puc19.fasta
+mutated_fasta: data/mutated/mutated_puc19.fasta
+
+output_folder: outputs
+
+mutations: 
+  - type: change
+    position: 245
+    new_base: A
+
+  - type: delete
+    start: 500
+    end: 506
+
+  - type: insert
+    after: 1200
+    sequence: TTGACA
