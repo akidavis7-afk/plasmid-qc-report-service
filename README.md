@@ -1,77 +1,99 @@
-# Plasmid Mutation QC Report Service
+# Plasmid QC Report Service
 
-A Python-based portfolio project for plasmid sequence comparison, mutation reporting, and research-use visualization.
+A portfolio demonstration of a Python-based plasmid mutation QC reporting workflow.
 
-This project demonstrates a custom workflow where researchers provide reference plasmid files and sample/mutated sequence files, and I generate clean output reports such as mutation tables, alignment previews, plasmid map figures, and summary PDFs.
+Researchers provide plasmid sequence files, and I provide clean output reports such as mutation tables, alignment previews, summary PDFs, and simple mutation map figures.
 
-## Service Overview
+This service focuses on **custom reporting and repetitive workflow automation**. It does not replace professional plasmid software such as SnapGene, Benchling, Addgene tools, or sequencing providers.
 
-Many molecular biology labs need to compare expected plasmid sequences with actual mutated or sequencing-result sequences. This workflow helps convert those files into clear, reviewable outputs.
-This service focuses on accurate mutation detection, reference-coordinate reporting, and clean summary deliverables. The main visualization output is a stable linear mutation map, with optional circular plasmid map output when suitable.
+---
 
-The service can provide:
+## What This Service Does
 
-* Reference vs sample sequence comparison
-* Detection of mismatches, insertions, and deletions
-* Mutation positions reported using original plasmid coordinates
-* CSV mutation tables
-* Alignment preview files
-* Simple plasmid map figures in PNG/PDF
-* Final Markdown/PDF summary reports
+This workflow compares a reference plasmid sequence with a sample or mutated sequence and reports:
 
-## Visualization Status
+* mismatches
+* insertions
+* deletions
+* mutation positions based on the original reference plasmid coordinates
+* alignment preview
+* simple mutation map figure
+* summary report in Markdown/PDF format
 
-The current workflow uses a **linear mutation map** as the main stable visualization output. This map clearly shows mutation positions based on the original/reference plasmid coordinates.
+The main stable visualization is a **linear mutation map**. A circular plasmid map may be included as an optional experimental visualization when suitable.
 
-A **circular plasmid map** can also be included as an optional experimental visualization when suitable. However, circular plasmid maps can become crowded when many GenBank features and mutation labels overlap, so the linear map is used as the primary reliable output for mutation review.
+---
 
-This is not intended to replace professional tools such as SnapGene, Benchling, or Addgene tools. The goal is to provide custom automation and reporting support for repetitive plasmid QC workflows.
+## What the Client Provides
 
-## Example Workflow
+For a basic report, please provide:
 
-```text
-Client provides:
-1. Reference GenBank file
-2. Reference FASTA file
-3. Sample or mutated FASTA file
-4. Plasmid topology: circular or linear
-5. Important features to show, if any
+1. Reference plasmid file
 
-I provide:
-1. mutation_report.csv
-2. alignment.txt
-3. summary_report.md
-4. summary_report.pdf
-5. linear_mutation_map.png
-6. linear_mutation_map.pdf
-7. optional circular_plasmid_map.png / .pdf when suitable
-```
+   * Preferred: GenBank `.gb` / `.gbk`
+   * Accepted: FASTA `.fasta` / `.fa`
+
+2. Sample or mutated sequence file
+
+   * Preferred: FASTA `.fasta` / `.fa`
+
+3. Plasmid topology
+
+   * circular or linear
+
+4. Important features to show, if any
+
+   * gene
+   * promoter
+   * ori
+   * antibiotic marker
+   * MCS
+   * tag
+   * restriction site
+
+5. Expected mutation information, if known
+
+   * Example: “We expected A245G”
+   * Example: “There should be an insertion near AmpR”
+
+For a first sample report, non-confidential plasmid examples are preferred.
+
+---
+
+## What I Deliver
+
+Depending on the request, I can provide:
+
+* `mutation_report.csv`
+* `alignment_preview_sample.txt`
+* `summary_report.md`
+* `summary_report.pdf`
+* `linear_mutation_map.png`
+* `linear_mutation_map.pdf`
+
+Optional output:
+
+* `circular_plasmid_map.png`
+* `circular_plasmid_map.pdf`
+
+The linear mutation map is the main stable visual output. Circular plasmid maps can become crowded when many GenBank features and mutation labels overlap, so circular output is optional.
+
+---
 
 ## Example Deliverables
 
-After processing the provided plasmid files, the output package may include:
-
 ```text
-outputs/
-├── tables/
-│   └── mutation_report.csv
-│
-├── reports/
-│   ├── alignment.txt
-│   ├── summary_report.md
-│   └── summary_report.pdf
-│
+examples/
+├── mutation_report_sample.csv
+├── alignment_preview_sample.txt
+├── summary_report_sample.md
+├── summary_report_sample.pdf
 └── figures/
-    ├── linear_mutation_map.png
-    ├── linear_mutation_map.pdf
-    ├── circular_plasmid_map.png      # optional / experimental
-    └── circular_plasmid_map.pdf      # optional / experimental
-
+    ├── linear_mutation_map_sample.png
+    └── linear_original_map_sample.png
 ```
 
-## Example Mutation Report
-
-Example output table:
+Example mutation report:
 
 | ID | Type      | Reference position | Reference sequence | Sample sequence | Length |
 | -: | --------- | ------------------ | ------------------ | --------------- | -----: |
@@ -81,124 +103,55 @@ Example output table:
 
 Mutation positions are reported using the original/reference plasmid coordinate system.
 
-## Input Files Needed
-
-For a basic report, please provide:
-
-1. **Reference plasmid file**
-
-   * Preferred: GenBank file `.gb` or `.gbk`
-   * Accepted: FASTA file `.fasta` or `.fa`
-
-2. **Sample or mutated sequence file**
-
-   * Preferred: FASTA file `.fasta` or `.fa`
-
-3. **Topology information**
-
-   * Circular or linear
-
-4. **Important features to show**
-
-   * Example: gene, promoter, ori, antibiotic marker, MCS, tag, restriction site
-
-5. **Expected mutation information, if known**
-
-   * Example: “We expected A245G”
-   * Example: “There should be a small insertion near AmpR”
-
-## What I Deliver
-
-Depending on the request, I can provide:
-
-- `mutation_report.csv`
-- `alignment.txt`
-- `summary_report.md`
-- `summary_report.pdf`
-- `linear_mutation_map.png`
-- `linear_mutation_map.pdf`
-
-Optional visualization:
-
-- `circular_plasmid_map.png`
-- `circular_plasmid_map.pdf`
-
-The linear mutation map is the main stable visual output. The circular plasmid map is optional and may be included when the GenBank annotations are suitable for clear visualization.
-
-For custom requests, I can also prepare:
-
-* batch reports for multiple plasmids
-* custom table formats
-* lab-notebook-friendly summaries
-* presentation-ready figures
-* reusable private workflow scripts
-
-## What This Portfolio Demonstrates
-
-This project demonstrates my ability to:
-
-* Work with FASTA and GenBank files
-* Use Python for sequence analysis automation
-* Compare reference and sample sequences
-* Detect mismatches, insertions, and deletions
-* Report sequence changes using reference coordinates
-* Generate CSV, Markdown, PDF, and image outputs
-* Build repeatable research-use reporting workflows
+---
 
 ## Intended Use
 
 This service is intended for:
 
 * research-use plasmid QC support
-* automation of repetitive sequence comparison tasks
-* report generation
-* figure generation
-* portfolio demonstration
+* repetitive sequence comparison reporting
+* mutation table generation
+* summary PDF generation
+* simple figure generation
 * non-clinical research workflows
 
-## Not Intended For
-
-This service is not intended for:
-
-* clinical diagnosis
-* medical decision-making
-* patient data analysis
-* final biological interpretation
-* replacing professional molecular biology software
-* large-scale NGS analysis
-* complex genome assembly
-* confidential data processing without prior agreement
+---
 
 ## Limitations
 
+* This service is for research-use automation and visualization only.
+* It does not provide clinical, diagnostic, or final biological interpretation.
+* Final biological interpretation should be reviewed by qualified researchers.
 * Mutation positions are reported based on the original/reference plasmid coordinate system.
 * Insertions and deletions in repetitive regions may have ambiguous exact positions depending on alignment scoring.
 * Large insertions, deletions, inversions, or rearrangements may require manual review.
-* The linear mutation map is the primary stable visualization output.
-* Circular plasmid map generation is included only as an optional/experimental visualization.
-* Circular plasmid visualization can become crowded when many features overlap.
-* This workflow currently assumes reference and sample sequences are in the same orientation.
-* Final biological interpretation should be reviewed by qualified researchers.
+* Circular plasmid map generation is optional and may not be suitable for highly crowded GenBank annotations.
+* This workflow assumes the reference and sample sequences are in the same orientation.
+
+---
 
 ## Data Privacy
 
 Please do not send patient data, clinical data, or highly confidential unpublished data without prior agreement.
 
-For the first sample report, non-confidential plasmid examples are preferred.
+For a first sample report, please use non-confidential plasmid files.
 
-## Code and Copyright Notice
+---
 
-This repository is provided as a portfolio demonstration of my plasmid mutation QC reporting workflow.
+## Code Availability
 
-No open-source license is granted.
+This repository is a public service portfolio. It shows example deliverables and service information.
 
-You may view this repository for evaluation purposes only. You may not copy, reuse, modify, redistribute, or use the source code in your own projects without written permission.
+The full working Python workflow is not included in this public repository.
 
-If you are interested in using this workflow, please contact me for a custom report or private service arrangement.
+No open-source license is granted. The workflow, templates, and source code are not available for copying, reuse, modification, or redistribution without written permission.
+
+---
 
 ## Contact
 
-If you have a non-confidential plasmid example and would like a sample report, please contact me with:
+To request a sample report, please send:
 
 * reference GenBank or FASTA file
 * sample/mutated FASTA file
